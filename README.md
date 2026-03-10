@@ -183,6 +183,8 @@ Baud rate : 115 200 | 8 bits | No parity | 1 stop bit | TX/RX
 | Train | 96% |
 | Test | 85% |
 
+<img width="761" height="916" alt="image" src="https://github.com/user-attachments/assets/1225e7f4-f5fa-4090-9672-0c9cf5ed1b83" />
+
 Le dataset original présente un déséquilibre massif (~97% "No Failure"), ce qui biaise fortement tout modèle naïf vers la classe majoritaire. Les résultats sans rééquilibrage illustrent ce problème : TWF atteint un F1-score de 0.00 (aucune prédiction correcte), HDF 0.09, PWF 0.26, pour un macro F1 global de seulement 0.38. Le modèle se contentait essentiellement de prédire "No Failure" en permanence, avec 119 et 85 faux négatifs respectivement sur HDF et PWF.
 
 Avant évaluation, le dataset original (~97% "No Failure") a été rééquilibré via une combinaison de SMOTE (oversampling des classes minoritaires) et undersampling de la classe majoritaire, aboutissant à 2000 exemples par classe. Les performances sont donc évaluées sur un dataset équilibré, ce qui signifie que le déséquilibre de classes n'est plus une excuse valable pour justifier de mauvaises performances : les faiblesses observées reflètent des limitations intrinsèques du modèle ou de la qualité des données synthétiques générées.
