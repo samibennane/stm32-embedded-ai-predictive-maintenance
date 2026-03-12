@@ -71,7 +71,6 @@ projet_IA/
 │   ├── Core/Inc/main.h
 │   ├── app_x-cube-ai.c          # Logique d'inférence embarquée
 │   └── app_x-cube-ai.h
-├── images/
 └── README.md
 ```
 
