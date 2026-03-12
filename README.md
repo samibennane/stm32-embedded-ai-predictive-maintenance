@@ -23,8 +23,7 @@ Nous avons entraîné un DNN (Deep Neural Network) sur le dataset **AI4I 2020 Pr
 - [Entraînement du modèle](#entraînement-du-modèle)
 - [Déploiement embarqué](#déploiement-embarqué)
 - [Performances](#performances)
-- [Limitations connues](#limitations-connues)
-
+- [Vérification de l'inférence embarquée](#vérification-de-linférence-embarquée)
 ---
 
 ## Stack technique
@@ -148,6 +147,8 @@ Le DNN utilise des couches denses avec batch normalisation pour limiter l'overfi
 ### La carte : STM32L4R9
 
 Microcontrôleur ARM Cortex-M4 ultra-basse consommation, avec 2 Mo de Flash et 640 Ko de SRAM.
+
+![WhatsApp Image 2026-03-12 at 13 47 59](https://github.com/user-attachments/assets/790aaca4-e490-41bc-a2ae-1f7154c4c0ae)
 
 ### Occupation mémoire après conversion X-CUBE-AI
 
