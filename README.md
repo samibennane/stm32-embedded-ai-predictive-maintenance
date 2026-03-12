@@ -205,3 +205,24 @@ Interprétation industrielle
 Dans un contexte de maintenance prédictive, le biais observé, recall élevé sur les pannes, précision faible, reste discutablement acceptable : rater une vraie panne entraîne une défaillance machine potentiellement coûteuse, tandis qu'une fausse alarme génère une intervention préventive inutile mais sans conséquence grave. Cependant, un taux de faux positifs pour "No Failure" élevé comme celui observé ici risque à terme de décrédibiliser le système auprès des opérateurs terrain. La limite fondamentale de ce modèle reste la classe TWF, dont les 8 exemples réels sont insuffisants pour produire un SMOTE de qualité :  une collecte de données supplémentaires sur ce type de panne serait la seule vraie solution.
 
 Après déploiement sur la carte, de légères différences sont observées par rapport aux prédictions Python, attribuables à la quantification du modèle et à la précision arithmétique réduite du microcontrôleur.
+
+## Vérification de l'inférence embarquée
+
+### Synchronisation et démarrage
+
+<img width="1466" height="584" alt="inference1" src="https://github.com/user-attachments/assets/a49fdcfc-d890-4cc6-bf2f-b3364d04517e" />
+
+La carte se synchronise correctement avec le PC (échange `0xAB` → `0xCD`). Les premières 
+itérations affichent des accuracies faibles (0.10, 0.20...), ce qui est attendu : le jeu 
+de test est dominé par des exemples `No Failure` et le modèle embarqué prend quelques 
+itérations avant de stabiliser ses prédictions.
+
+### Convergence sur les dernières itérations
+
+<img width="1500" height="1202" alt="inference2" src="https://github.com/user-attachments/assets/1e700922-008d-4273-9b3e-0ea6b3aed8df" />
+
+Sur les 10 dernières itérations, l'accuracy cumulée remonte progressivement jusqu'à **0.91**, 
+cohérent avec les performances mesurées côté Python. Les vecteurs de sortie renvoyés par 
+la carte (ex: `[0.988, 0.0, 0.004, 0.0, 0.0]`) montrent que le modèle embarqué converge 
+bien vers la classe `No Failure` avec une forte confiance, confirmant que la conversion 
+X-CUBE-AI n'a pas dégradé significativement les performances du modèle.
