@@ -149,6 +149,7 @@ Le DNN utilise des couches denses avec batch normalisation pour limiter l'overfi
 Microcontrôleur ARM Cortex-M4 ultra-basse consommation, avec 2 Mo de Flash et 640 Ko de SRAM.
 
 <img src="https://github.com/user-attachments/assets/790aaca4-e490-41bc-a2ae-1f7154c4c0ae" width="400"/>
+
 ### Occupation mémoire après conversion X-CUBE-AI
 
 | Ressource | Utilisé | Total | Occupation |
