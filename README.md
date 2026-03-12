@@ -59,7 +59,7 @@ Lancer le fichier `machine_failure.py`
 ## Structure du dépôt
 
 ```
-projet_IA/
+stm32-embedded-ai-predictive-maintenance/
 ├── TP_IA_EMBARQUEE.ipynb     # Notebook d'entraînement (Google Colab)
 ├── machine_failure.py                  # Communication série PC ↔ STM32
 ├── model/
