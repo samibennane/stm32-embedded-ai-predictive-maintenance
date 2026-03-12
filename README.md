@@ -176,6 +176,20 @@ Baud rate : 115 200 | 8 bits | No parity | 1 stop bit | TX/RX
 
 ---
 
+### Paramètres de communication
+```c
+#define BYTES_IN_FLOATS 8*4
+#define CLASS_NUMBER 5
+```
+
+`BYTES_IN_FLOATS` définit la taille en bytes du vecteur d'entrée envoyé par le PC : 
+le modèle prend **8 features** en entrée, chacune encodée sur **4 bytes** (float32), 
+soit 32 bytes par inférence transmis via UART.
+
+`CLASS_NUMBER` correspond au nombre de classes en sortie du modèle : 
+`No Failure`, `TWF`, `HDF`, `PWF`, `OSF` — le vecteur softmax renvoyé par la carte 
+contient donc 5 valeurs flottantes dont l'argmax donne la classe prédite.
+
 ## Performances
 
 | Set | Accuracy |
