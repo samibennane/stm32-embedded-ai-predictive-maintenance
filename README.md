@@ -197,7 +197,7 @@ contient donc 5 valeurs flottantes dont l'argmax donne la classe prédite.
 | Train | 96% |
 | Test | 85% |
 
-<img width="761" height="916" alt="image" src="https://github.com/user-attachments/assets/1225e7f4-f5fa-4090-9672-0c9cf5ed1b83" />
+<img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/1225e7f4-f5fa-4090-9672-0c9cf5ed1b83" />
 
 Le dataset original présente un déséquilibre massif (~97% "No Failure"), ce qui biaise fortement tout modèle naïf vers la classe majoritaire. Les résultats sans rééquilibrage illustrent ce problème : TWF atteint un F1-score de 0.00 (aucune prédiction correcte), HDF 0.09, PWF 0.26, pour un macro F1 global de seulement 0.38. Le modèle se contentait essentiellement de prédire "No Failure" en permanence, avec 119 et 85 faux négatifs respectivement sur HDF et PWF.
 
@@ -247,6 +247,20 @@ des exemples réellement `No Failure`. Ces cas embarqués illustrent concrèteme
 positifs HDF visibles dans la matrice de confusion — le modèle sur-prédit HDF avec une 
 frontière de décision trop large, conséquence directe du SMOTE qui a généré des exemples 
 synthétiques HDF empiétant sur la zone No Failure.
+
+Les itérations 43 et 44 illustrent un cas de bonne détection embarquée : les deux exemples 
+ont `Expected output: 3` (PWF) et le modèle renvoie respectivement `[0.133, 0.055, 0.047, 
+0.580, 0.176]` et `[0.039, 0.004, 0.039, 0.898, 0.008]`, soit l'indice 3 dominant dans 
+les deux cas, PWF correctement prédit avec 58% puis 89% de confiance.
+
+
+
+Ce résultat est cohérent avec la matrice de confusion : PWF est l'une des classes les mieux 
+discriminées du modèle avec 16 vrais positifs sur 17, et ces deux itérations embarquées 
+en sont une illustration concrète. La conversion X-CUBE-AI préserve bien la capacité du 
+modèle à identifier PWF, qui bénéficie de features physiquement plus discriminantes que 
+les autres classes de pannes.
+
 
 Ces résultats confirment que la conversion X-CUBE-AI n'a pas dégradé significativement 
 les performances : le modèle embarqué reproduit fidèlement les biais et forces du modèle 
