@@ -253,8 +253,9 @@ ont `Expected output: 3` (PWF) et le modèle renvoie respectivement `[0.133, 0.0
 0.580, 0.176]` et `[0.039, 0.004, 0.039, 0.898, 0.008]`, soit l'indice 3 dominant dans 
 les deux cas, PWF correctement prédit avec 58% puis 89% de confiance.
 
-<img src="images/3inf.png" width="500"/>
-
+<div align="center">
+  <img src="images/3inf.png" width="600"/>
+</div>
 Ce résultat est cohérent avec la matrice de confusion : PWF est l'une des classes les mieux 
 discriminées du modèle avec 16 vrais positifs sur 17, et ces deux itérations embarquées 
 en sont une illustration concrète. La conversion X-CUBE-AI préserve bien la capacité du 
