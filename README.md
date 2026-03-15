@@ -236,7 +236,18 @@ itérations avant de stabiliser ses prédictions.
 <img width="1500" height="1202" alt="inference2" src="https://github.com/user-attachments/assets/1e700922-008d-4273-9b3e-0ea6b3aed8df" />
 
 Sur les 10 dernières itérations, l'accuracy cumulée remonte progressivement jusqu'à **0.91**, 
-cohérent avec les performances mesurées côté Python. Les vecteurs de sortie renvoyés par 
-la carte (ex: `[0.988, 0.0, 0.004, 0.0, 0.0]`) montrent que le modèle embarqué converge 
-bien vers la classe `No Failure` avec une forte confiance, confirmant que la conversion 
-X-CUBE-AI n'a pas dégradé significativement les performances du modèle.
+cohérent avec les performances mesurées côté Python. La majorité des vecteurs de sortie 
+convergent vers `No Failure` avec une forte confiance (ex: `[0.988, 0.0, 0.004, 0.0, 0.0]`), 
+ce qui est attendu puisque le jeu de test réel est dominé par cette classe (~97%).
+
+On retrouve également sur la carte le comportement observé dans la matrice de confusion : 
+les itérations 98 et 99 renvoient respectivement `[0.051, 0.117, 0.737, 0.027, 0.054]` et 
+`[0.008, 0.020, 0.941, 0.008, 0.016]`, soit deux prédictions HDF (indice 2 dominant) sur 
+des exemples réellement `No Failure`. Ces cas embarqués illustrent concrètement les 91 faux 
+positifs HDF visibles dans la matrice de confusion — le modèle sur-prédit HDF avec une 
+frontière de décision trop large, conséquence directe du SMOTE qui a généré des exemples 
+synthétiques HDF empiétant sur la zone No Failure.
+
+Ces résultats confirment que la conversion X-CUBE-AI n'a pas dégradé significativement 
+les performances : le modèle embarqué reproduit fidèlement les biais et forces du modèle 
+Python original.
