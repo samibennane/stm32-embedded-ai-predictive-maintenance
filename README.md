@@ -151,10 +151,35 @@ Microcontrôleur ARM Cortex-M4 ultra-basse consommation, avec 2 Mo de Flash et 6
 
 ### Occupation mémoire après conversion X-CUBE-AI
 
-| Ressource | Utilisé | Total | Occupation |
-|---|---|---|---|
-| FLASH | 10 392 B | 16 016 B | **64,9%** |
-| RAM | 2 480 B | 2 768 B | **89,6%** |
+### Analyse X-CUBE-AI — Empreinte mémoire du modèle
+
+<div align="center">
+  <img src="images/anlz" width="700"/>
+</div>
+
+L'analyse X-CUBE-AI du modèle `machine_failure_model.h5` révèle une empreinte mémoire 
+très réduite, adaptée aux contraintes de la STM32L4R9.
+
+**Flash (mémoire permanente) : 26 128 B au total**
+
+Les poids du modèle occupent **15 508 B** — ce sont tous les paramètres appris pendant 
+l'entraînement. La library X-CUBE-AI nécessaire à l'inférence occupe **10 620 B**, soit 
+40.6% du total Flash utilisé.
+
+**RAM (mémoire vive) : 2 868 B au total**
+
+La RAM est dominée par la library X-CUBE-AI (**2 484 B, 86.6%**), ce qui est attendu pour 
+un petit modèle : l'infrastructure a un coût fixe incompressible. Les activations 
+intermédiaires n'occupent que **384 B**. On retrouve également la cohérence avec les 
+defines du code C : l'input fait **32 B** (8 features × 4 bytes = `BYTES_IN_FLOATS`) et 
+l'output **20 B** (5 classes × 4 bytes = `CLASS_NUMBER`).
+
+**Conclusion**
+
+Le modèle complet ne consomme que **25 KiB de Flash** et **2.8 KiB de RAM**, soit une 
+fraction infime des 2 Mo de Flash et 640 Ko de SRAM disponibles sur la carte. La 
+STM32L4R9 dispose donc d'une large marge pour exécuter ce modèle sans risque de 
+saturation mémoire.
 
 ### Flux d'exécution embarqué
 
