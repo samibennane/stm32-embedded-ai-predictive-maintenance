@@ -260,7 +260,21 @@ les deux cas, PWF correctement prédit avec 58% puis 89% de confiance.
 </div>
 Ce résultat est cohérent avec la matrice de confusion : PWF est l'une des classes les mieux 
 discriminées du modèle avec 16 vrais positifs sur 17, et ces deux itérations embarquées 
-en sont une illustration concrète. La conversion X-CUBE-AI préserve bien la capacité du 
+en sont une illustration concrète.
+
+L'itération 38 illustre une bonne détection embarquée de la classe OSF : avec `Expected 
+output: 4` (OSF), le modèle renvoie `[0.039, 0.039, 0.016, 0.020, 0.878]`, soit l'indice 
+4 dominant avec 87% de confiance — OSF correctement prédit.
+
+<div align="center">
+  <img src="images/4inf.png" width="600"/>
+</div>
+
+Ce résultat est cohérent avec la matrice de confusion : OSF obtient 20 vrais positifs sur 
+20, un recall parfait. Le modèle embarqué reproduit fidèlement cette capacité de détection, 
+confirmant que la conversion X-CUBE-AI préserve bien les performances sur cette classe.
+
+La conversion X-CUBE-AI préserve bien la capacité du 
 modèle à identifier PWF, qui bénéficie de features physiquement plus discriminantes que 
 les autres classes de pannes.
 
