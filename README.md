@@ -253,7 +253,7 @@ ont `Expected output: 3` (PWF) et le modèle renvoie respectivement `[0.133, 0.0
 0.580, 0.176]` et `[0.039, 0.004, 0.039, 0.898, 0.008]`, soit l'indice 3 dominant dans 
 les deux cas, PWF correctement prédit avec 58% puis 89% de confiance.
 
-
+https://private-user-images.githubusercontent.com/194844726/563699217-2ddef694-5f6b-4226-82c0-28eaf0dbff1d.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzM1NzEzOTYsIm5iZiI6MTc3MzU3MTA5NiwicGF0aCI6Ii8xOTQ4NDQ3MjYvNTYzNjk5MjE3LTJkZGVmNjk0LTVmNmItNDIyNi04MmMwLTI4ZWFmMGRiZmYxZC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwMzE1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDMxNVQxMDM4MTZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT04ZGFiYmJiNDc5ZDMyYzEyYmMxYTU1NTk1MmZjODk5ZThmMTc3MGJjMTM3NmFkY2U2ZjUxN2ZkY2FkM2RjODU2JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.S2424rzJRA84nZWGu1yiroBwjxMY85LRkZS-fZqxp9U
 
 Ce résultat est cohérent avec la matrice de confusion : PWF est l'une des classes les mieux 
 discriminées du modèle avec 16 vrais positifs sur 17, et ces deux itérations embarquées 
