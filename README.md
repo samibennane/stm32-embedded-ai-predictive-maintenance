@@ -224,8 +224,9 @@ Après déploiement sur la carte, de légères différences sont observées par 
 
 ### Synchronisation et démarrage
 
-<img width="1466" height="584" alt="inference1" src="https://github.com/user-attachments/assets/a49fdcfc-d890-4cc6-bf2f-b3364d04517e" />
-
+<div align="center">
+  <img width="600" alt="inference1" src="https://github.com/user-attachments/assets/a49fdcfc-d890-4cc6-bf2f-b3364d04517e" />
+</div>
 La carte se synchronise correctement avec le PC (échange `0xAB` → `0xCD`). Les premières 
 itérations affichent des accuracies faibles (0.10, 0.20...), ce qui est attendu : le jeu 
 de test est dominé par des exemples `No Failure` et le modèle embarqué prend quelques 
@@ -233,8 +234,9 @@ itérations avant de stabiliser ses prédictions.
 
 ### Convergence sur les dernières itérations
 
-<img width="1500" height="1202" alt="inference2" src="https://github.com/user-attachments/assets/1e700922-008d-4273-9b3e-0ea6b3aed8df" />
-
+<div align="center">
+  <img width="600" alt="inference2" src="https://github.com/user-attachments/assets/1e700922-008d-4273-9b3e-0ea6b3aed8df" />
+</div>
 Sur les 10 dernières itérations, l'accuracy cumulée remonte progressivement jusqu'à **0.91**, 
 cohérent avec les performances mesurées côté Python. La majorité des vecteurs de sortie 
 convergent vers `No Failure` avec une forte confiance (ex: `[0.988, 0.0, 0.004, 0.0, 0.0]`), 
