@@ -151,8 +151,6 @@ Microcontrôleur ARM Cortex-M4 ultra-basse consommation, avec 2 Mo de Flash et 6
 
 ### Occupation mémoire après conversion X-CUBE-AI
 
-### Analyse X-CUBE-AI — Empreinte mémoire du modèle
-
 <div align="center">
   <img src="images/anlz" width="700"/>
 </div>
