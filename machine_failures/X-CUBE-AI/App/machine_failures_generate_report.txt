@@ -1,0 +1,204 @@
+ST Edge AI Core v2.2.0-20266 2adc00962
+Created date          : 2026-03-04 13:48:20
+Parameters            : generate --target stm32l4 --name machine_failures -m C:/Users/samib/OneDrive/Bureau/MPL_machine_failures/machine_failure_model.h5 --compression none --verbosity 1 --workspace C:/Users/samib/AppData/Local/Temp/mxAI_workspace3592496468542008028969393956347483 --output C:/Users/samib/.stm32cubemx/machine_failures_output
+
+Exec/report summary (generate)
+------------------------------------------------------------------------------------------------------------
+model file         :   C:\Users\samib\OneDrive\Bureau\MPL_machine_failures\machine_failure_model.h5         
+type               :   keras                                                                                
+c_name             :   machine_failures                                                                     
+compression        :   none                                                                                 
+options            :   allocate-inputs, allocate-outputs                                                    
+optimization       :   balanced                                                                             
+target/series      :   stm32l4                                                                              
+workspace dir      :   C:\Users\samib\AppData\Local\Temp\mxAI_workspace3592496468542008028969393956347483   
+output dir         :   C:\Users\samib\.stm32cubemx\machine_failures_output                                  
+model_fmt          :   float                                                                                
+model_name         :   machine_failure_model                                                                
+model_hash         :   0xbe2706e9ca5d5186bc89de9a8ede9b3b                                                   
+params #           :   4,133 items (16.14 KiB)                                                              
+------------------------------------------------------------------------------------------------------------
+input 1/1          :   'input_layer_20', f32(1x8), 32 Bytes, activations                                    
+output 1/1         :   'dense_78', f32(1x5), 20 Bytes, activations                                          
+macc               :   4,080                                                                                
+weights (ro)       :   15,508 B (15.14 KiB) (1 segment) / -1,024(-6.2%) vs float model                      
+activations (rw)   :   384 B (384 B) (1 segment) *                                                          
+ram (total)        :   384 B (384 B) = 384 + 0 + 0                                                          
+------------------------------------------------------------------------------------------------------------
+(*) 'input'/'output' buffers are allocated in the activations buffer
+
+Model name - machine_failure_model
+------ -------------------------------------------------------- ------------ ------------- ------- ------------------------ --- --------------- --------------- ------------------------------- 
+m_id   layer (type,original)                                    oshape       param/size       macc             connected to   | c_size          c_macc          c_type                          
+------ -------------------------------------------------------- ------------ ------------- ------- ------------------------ --- --------------- --------------- ------------------------------- 
+0      input_layer_20 (Input, InputLayer)                       [b:1,c:8]                                                     |                                 
+------ -------------------------------------------------------- ------------ ------------- ------- ------------------------ --- --------------- --------------- ------------------------------- 
+1      dense_75_dense (Dense, Dense)                            [b:1,c:64]   576/2,304         576           input_layer_20   |                 +64(+11.1%)     Dense_/Nonlinearity_[0, 1]      
+       dense_75 (Nonlinearity, Dense)                           [b:1,c:64]                      64           dense_75_dense   |                 -64(-100.0%)    
+------ -------------------------------------------------------- ------------ ------------- ------- ------------------------ --- --------------- --------------- ------------------------------- 
+2      batch_normalization_35 (ScaleBias, BatchNormalization)   [b:1,c:64]   128/512           128                 dense_75   | -512(-100.0%)   -128(-100.0%)   
+------ -------------------------------------------------------- ------------ ------------- ------- ------------------------ --- --------------- --------------- ------------------------------- 
+3      dense_76_dense (Dense, Dense)                            [b:1,c:32]   2,080/8,320     2,080   batch_normalization_35   |                 +32(+1.5%)      Dense_/Nonlinearity_[2, 3]      
+       dense_76 (Nonlinearity, Dense)                           [b:1,c:32]                      32           dense_76_dense   |                 -32(-100.0%)    
+------ -------------------------------------------------------- ------------ ------------- ------- ------------------------ --- --------------- --------------- ------------------------------- 
+4      batch_normalization_36 (ScaleBias, BatchNormalization)   [b:1,c:32]   64/256             64                 dense_76   | -256(-100.0%)   -64(-100.0%)    
+------ -------------------------------------------------------- ------------ ------------- ------- ------------------------ --- --------------- --------------- ------------------------------- 
+5      dense_77_dense (Dense, Dense)                            [b:1,c:32]   1,056/4,224     1,056   batch_normalization_36   |                 +32(+3.0%)      Dense_/Nonlinearity_[4, 5]      
+       dense_77 (Nonlinearity, Dense)                           [b:1,c:32]                      32           dense_77_dense   |                 -32(-100.0%)    
+------ -------------------------------------------------------- ------------ ------------- ------- ------------------------ --- --------------- --------------- ------------------------------- 
+6      batch_normalization_37 (ScaleBias, BatchNormalization)   [b:1,c:32]   64/256             64                 dense_77   | -256(-100.0%)   -64(-100.0%)    
+------ -------------------------------------------------------- ------------ ------------- ------- ------------------------ --- --------------- --------------- ------------------------------- 
+7      dense_78_dense (Dense, Dense)                            [b:1,c:5]    165/660           165   batch_normalization_37   |                 +75(+45.5%)     Dense_/Nonlinearity_[o][6, 7]   
+       dense_78 (Nonlinearity, Dense)                           [b:1,c:5]                       75           dense_78_dense   |                 -75(-100.0%)    
+------ -------------------------------------------------------- ------------ ------------- ------- ------------------------ --- --------------- --------------- ------------------------------- 
+model/c-model: macc=4,336/4,080 -256(-5.9%) weights=16,532/15,508 -1,024(-6.2%) activations=--/384 io=--/0
+
+
+
+Generated C-graph summary
+------------------------------------------------------------------------------------------------------------------------
+model name            : machine_failure_model
+c-name                : machine_failures
+c-node #              : 8
+c-array #             : 17
+activations size      : 384 (1 segment)
+weights size          : 15508 (1 segment)
+macc                  : 4080
+inputs                : ['input_layer_20_output']
+outputs               : ['dense_78_output']
+
+C-Arrays (17)
+------ ------------------------ ----------- ------------------------- ------------- --------- 
+c_id   name (*_array)           item/size   domain/mem-pool           c-type        comment   
+------ ------------------------ ----------- ------------------------- ------------- --------- 
+0      dense_75_dense_bias      64/256      weights/weights           const float             
+1      dense_75_dense_output    64/256      activations/**default**   float                   
+2      dense_75_dense_weights   512/2048    weights/weights           const float             
+3      dense_75_output          64/256      activations/**default**   float                   
+4      dense_76_dense_bias      32/128      weights/weights           const float             
+5      dense_76_dense_output    32/128      activations/**default**   float                   
+6      dense_76_dense_weights   2048/8192   weights/weights           const float             
+7      dense_76_output          32/128      activations/**default**   float                   
+8      dense_77_dense_bias      32/128      weights/weights           const float             
+9      dense_77_dense_output    32/128      activations/**default**   float                   
+10     dense_77_dense_weights   1024/4096   weights/weights           const float             
+11     dense_77_output          32/128      activations/**default**   float                   
+12     dense_78_dense_bias      5/20        weights/weights           const float             
+13     dense_78_dense_output    5/20        activations/**default**   float                   
+14     dense_78_dense_weights   160/640     weights/weights           const float             
+15     dense_78_output          5/20        activations/**default**   float         /output   
+16     input_layer_20_output    8/32        activations/**default**   float         /input    
+------ ------------------------ ----------- ------------------------- ------------- --------- 
+
+C-Layers (8)
+------ ---------------- ---- --------------- ------ ------ --------------------------- ------------------ 
+c_id   name (*_layer)   id   layer_type      macc   rom    tensors                     shape (array id)   
+------ ---------------- ---- --------------- ------ ------ --------------------------- ------------------ 
+0      dense_75_dense   1    Dense           576    2304   I: input_layer_20_output    f32(1x8) (16)      
+                                                           W: dense_75_dense_weights   f32(64x8) (2)      
+                                                           W: dense_75_dense_bias      f32(64) (0)        
+                                                           O: dense_75_dense_output    f32(1x64) (1)      
+------ ---------------- ---- --------------- ------ ------ --------------------------- ------------------ 
+1      dense_75         1    Nonlinearity    64     0      I: dense_75_dense_output    f32(1x64) (1)      
+                                                           O: dense_75_output          f32(1x64) (3)      
+------ ---------------- ---- --------------- ------ ------ --------------------------- ------------------ 
+2      dense_76_dense   3    Dense           2080   8320   I: dense_75_output          f32(1x64) (3)      
+                                                           W: dense_76_dense_weights   f32(32x64) (6)     
+                                                           W: dense_76_dense_bias      f32(32) (4)        
+                                                           O: dense_76_dense_output    f32(1x32) (5)      
+------ ---------------- ---- --------------- ------ ------ --------------------------- ------------------ 
+3      dense_76         3    Nonlinearity    32     0      I: dense_76_dense_output    f32(1x32) (5)      
+                                                           O: dense_76_output          f32(1x32) (7)      
+------ ---------------- ---- --------------- ------ ------ --------------------------- ------------------ 
+4      dense_77_dense   5    Dense           1056   4224   I: dense_76_output          f32(1x32) (7)      
+                                                           W: dense_77_dense_weights   f32(32x32) (10)    
+                                                           W: dense_77_dense_bias      f32(32) (8)        
+                                                           O: dense_77_dense_output    f32(1x32) (9)      
+------ ---------------- ---- --------------- ------ ------ --------------------------- ------------------ 
+5      dense_77         5    Nonlinearity    32     0      I: dense_77_dense_output    f32(1x32) (9)      
+                                                           O: dense_77_output          f32(1x32) (11)     
+------ ---------------- ---- --------------- ------ ------ --------------------------- ------------------ 
+6      dense_78_dense   7    Dense           165    660    I: dense_77_output          f32(1x32) (11)     
+                                                           W: dense_78_dense_weights   f32(5x32) (14)     
+                                                           W: dense_78_dense_bias      f32(5) (12)        
+                                                           O: dense_78_dense_output    f32(1x5) (13)      
+------ ---------------- ---- --------------- ------ ------ --------------------------- ------------------ 
+7      dense_78         7    Nonlinearity    75     0      I: dense_78_dense_output    f32(1x5) (13)      
+                                                           O: dense_78_output          f32(1x5) (15)      
+------ ---------------- ---- --------------- ------ ------ --------------------------- ------------------ 
+
+
+
+Number of operations per c-layer
+------- ------ ------------------------- ------- -------------- 
+c_id    m_id   name (type)                   #op           type 
+------- ------ ------------------------- ------- -------------- 
+0       1      dense_75_dense (Dense)        576   smul_f32_f32 
+1       1      dense_75 (Nonlinearity)        64     op_f32_f32 
+2       3      dense_76_dense (Dense)      2,080   smul_f32_f32 
+3       3      dense_76 (Nonlinearity)        32     op_f32_f32 
+4       5      dense_77_dense (Dense)      1,056   smul_f32_f32 
+5       5      dense_77 (Nonlinearity)        32     op_f32_f32 
+6       7      dense_78_dense (Dense)        165   smul_f32_f32 
+7       7      dense_78 (Nonlinearity)        75     op_f32_f32 
+------- ------ ------------------------- ------- -------------- 
+total                                      4,080 
+
+Number of operation types
+---------------- ------- ----------- 
+operation type         #           % 
+---------------- ------- ----------- 
+smul_f32_f32       3,877       95.0% 
+op_f32_f32           203        5.0% 
+
+Complexity report (model)
+------ ---------------- ------------------------- ------------------------- -------- 
+m_id   name             c_macc                    c_rom                     c_id     
+------ ---------------- ------------------------- ------------------------- -------- 
+1      dense_75_dense   |||||             15.7%   |||||             14.9%   [0, 1]   
+3      dense_76_dense   ||||||||||||||||  51.8%   ||||||||||||||||  53.6%   [2, 3]   
+5      dense_77_dense   ||||||||          26.7%   ||||||||          27.2%   [4, 5]   
+7      dense_78_dense   ||                 5.9%   ||                 4.3%   [6, 7]   
+------ ---------------- ------------------------- ------------------------- -------- 
+macc=4,080 weights=15,508 act=384 ram_io=0
+ 
+ Requested memory size by section - "stm32l4" target
+ ------------------------------ ------- -------- ------- ----- 
+ module                            text   rodata    data   bss 
+ ------------------------------ ------- -------- ------- ----- 
+ NetworkRuntime1020_CM4_GCC.a     6,924        0       0     0 
+ machine_failures.o                 606       64   2,236   160 
+ machine_failures_data.o             48       16      88     0 
+ lib (toolchain)*                   614       24       0     0 
+ ------------------------------ ------- -------- ------- ----- 
+ RT total**                       8,192      104   2,324   160 
+ ------------------------------ ------- -------- ------- ----- 
+ weights                              0   15,512       0     0 
+ activations                          0        0       0   384 
+ io                                   0        0       0     0 
+ ------------------------------ ------- -------- ------- ----- 
+ TOTAL                            8,192   15,616   2,324   544 
+ ------------------------------ ------- -------- ------- ----- 
+ *  toolchain objects (libm/libgcc*)
+ ** RT AI runtime objects (kernels+infrastructure)
+  
+  Summary - "stm32l4" target
+  ---------------------------------------------------
+               FLASH (ro)      %*   RAM (rw)       % 
+  ---------------------------------------------------
+  RT total         10,620   40.6%      2,484   86.6% 
+  ---------------------------------------------------
+  TOTAL            26,132              2,868         
+  ---------------------------------------------------
+  *  rt/total
+
+
+Generated files (7)
+------------------------------------------------------------------------------------ 
+C:\Users\samib\.stm32cubemx\machine_failures_output\machine_failures_data_params.h   
+C:\Users\samib\.stm32cubemx\machine_failures_output\machine_failures_data_params.c   
+C:\Users\samib\.stm32cubemx\machine_failures_output\machine_failures_data.h          
+C:\Users\samib\.stm32cubemx\machine_failures_output\machine_failures_data.c          
+C:\Users\samib\.stm32cubemx\machine_failures_output\machine_failures_config.h        
+C:\Users\samib\.stm32cubemx\machine_failures_output\machine_failures.h               
+C:\Users\samib\.stm32cubemx\machine_failures_output\machine_failures.c               
