@@ -157,13 +157,13 @@ très réduite, adaptée aux contraintes de la STM32L4R9.
 
 **Flash (mémoire permanente) : 26 128 B au total**
 
-Les poids du modèle occupent **15 508 B** — ce sont tous les paramètres appris pendant 
+Les poids du modèle occupent **15 508 B**, ce sont tous les paramètres appris pendant 
 l'entraînement. La library X-CUBE-AI nécessaire à l'inférence occupe **10 620 B**, soit 
 40.6% du total Flash **utilisé par le modèle** (pas de la Flash totale de la carte).
 
 **RAM (mémoire vive) : 2 868 B au total**
 
-La RAM est dominée par la library X-CUBE-AI (**2 484 B, 86.6%**) — ce pourcentage 
+La RAM est dominée par la library X-CUBE-AI (**2 484 B, 86.6%**), ce pourcentage 
 représente la part de la library dans les **2 868 B utilisés par le modèle**, pas dans 
 la RAM totale de la carte. Ce qui est attendu pour un petit modèle : l'infrastructure 
 a un coût fixe incompressible. Les activations intermédiaires n'occupent que **384 B**. 
