@@ -108,7 +108,19 @@ new_df.loc[new_df['OSF'] == 1, 'Failure_type'] = 4
 new_df.loc[new_df['RNF'] == 1, 'Failure_type'] = 5
 ```
 
-Le dataset AI4I 2020 encode les pannes sous forme de 5 colonnes binaires indépendantes (TWF, HDF, PWF, OSF, RNF), ce qui correspond formellement à un problème multi-label. Nous avons fait le choix de fusionner ces colonnes en une seule variable catégorielle à 6 classes (No Failure, TWF, HDF, PWF, OSF, RNF), transformant ainsi le problème en classification multi-classe. Ce choix est justifié par plusieurs raisons. Premièrement, l'analyse du dataset montre que les pannes simultanées sont extrêmement rares, si elles étaient fréquentes, le dataset lui-même ne serait pas exploitable comme benchmark de classification, car des exemples quasi-identiques porteraient des labels contradictoires selon la priorité de fusion choisie. Deuxièmement, d'un point de vue physique, les mécanismes de défaillance sont suffisamment distincts pour être mutuellement exclusifs dans la quasi-totalité des cas. Troisièmement, et surtout dans le contexte de ce projet, ce choix simplifie considérablement le déploiement embarqué : une sortie softmax à 6 classes permet une inférence réduite à un simple argmax sur le vecteur de sortie dans le code C sur STM32, sans logique de post-traitement complexe, sans gestion de seuils multiples et sans combinatoire de cas simultanés. Cela réduit également l'empreinte mémoire et la complexité de la tête de classification du réseau, deux contraintes critiques sur microcontrôleur STM32L4R9.
+Le dataset encode les pannes en 5 colonnes binaires séparées (TWF, HDF, PWF, OSF, RNF). 
+Nous avons choisi de les fusionner en une seule variable à 6 classes (No Failure, TWF, 
+HDF, PWF, OSF, RNF) pour trois raisons :
+
+1. **Les pannes simultanées sont quasi inexistantes** dans ce dataset — chaque machine 
+tombe en panne d'un seul type à la fois.
+
+2. **Les mécanismes de défaillance sont physiquement distincts** — TWF, HDF, PWF et OSF 
+correspondent à des causes différentes qui ne se produisent pas en même temps.
+
+3. **Le déploiement embarqué est simplifié** — une sortie softmax à 6 classes se réduit 
+à un simple `argmax` dans le code C, sans post-traitement complexe ni gestion de seuils 
+multiples, ce qui réduit l'empreinte mémoire sur STM32.
 
 Comme précisé précédemment, on retire les lignes bruitées du dataset : 
 
