@@ -159,15 +159,17 @@ très réduite, adaptée aux contraintes de la STM32L4R9.
 
 Les poids du modèle occupent **15 508 B** — ce sont tous les paramètres appris pendant 
 l'entraînement. La library X-CUBE-AI nécessaire à l'inférence occupe **10 620 B**, soit 
-40.6% du total Flash utilisé.
+40.6% du total Flash **utilisé par le modèle** (pas de la Flash totale de la carte).
 
 **RAM (mémoire vive) : 2 868 B au total**
 
-La RAM est dominée par la library X-CUBE-AI (**2 484 B, 86.6%**), ce qui est attendu pour 
-un petit modèle : l'infrastructure a un coût fixe incompressible. Les activations 
-intermédiaires n'occupent que **384 B**. On retrouve également la cohérence avec les 
-defines du code C : l'input fait **32 B** (8 features × 4 bytes = `BYTES_IN_FLOATS`) et 
-l'output **20 B** (5 classes × 4 bytes = `CLASS_NUMBER`).
+La RAM est dominée par la library X-CUBE-AI (**2 484 B, 86.6%**) — ce pourcentage 
+représente la part de la library dans les **2 868 B utilisés par le modèle**, pas dans 
+la RAM totale de la carte. Ce qui est attendu pour un petit modèle : l'infrastructure 
+a un coût fixe incompressible. Les activations intermédiaires n'occupent que **384 B**. 
+On retrouve également la cohérence avec les defines du code C : l'input fait **32 B** 
+(8 features × 4 bytes = `BYTES_IN_FLOATS`) et l'output **20 B** 
+(5 classes × 4 bytes = `CLASS_NUMBER`).
 
 **Conclusion**
 
