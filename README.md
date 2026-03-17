@@ -214,10 +214,13 @@ contient donc 5 valeurs flottantes dont l'argmax donne la classe prédite.
 
 ## Performances
 
+<div align="center">
+
 | Set | Accuracy |
 |---|---|
 | Train | 96% |
 | Test | 85% |
+</div>
 
 <div align="center">
 <img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/1225e7f4-f5fa-4090-9672-0c9cf5ed1b83" />
