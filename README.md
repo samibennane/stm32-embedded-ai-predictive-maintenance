@@ -118,9 +118,10 @@ tombe en panne d'un seul type à la fois.
 2. **Les mécanismes de défaillance sont physiquement distincts** — TWF, HDF, PWF et OSF 
 correspondent à des causes différentes qui ne se produisent pas en même temps.
 
-3. **Le déploiement embarqué est simplifié** — une sortie softmax à 6 classes se réduit 
-à un simple `argmax` dans le code C, sans post-traitement complexe ni gestion de seuils 
-multiples, ce qui réduit l'empreinte mémoire sur STM32.
+3. **Le déploiement embarqué est simplifié** — une sortie softmax à 5 classes permet à la 
+carte de renvoyer un simple vecteur de 5 probabilités via UART, sans logique de 
+post-traitement complexe ni gestion de seuils multiples. L'argmax est ensuite effectué 
+côté PC par le script Python, ce qui réduit la charge de calcul sur le STM32.
 
 Comme précisé précédemment, on retire les lignes bruitées du dataset : 
 
