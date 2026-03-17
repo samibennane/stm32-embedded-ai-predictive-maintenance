@@ -142,12 +142,14 @@ Le DNN utilise des couches denses avec batch normalisation pour limiter l'overfi
 
 Microcontrôleur ARM Cortex-M4 ultra-basse consommation, avec 2 Mo de Flash et 640 Ko de SRAM.
 
+<div align="center">
 <img src="https://github.com/user-attachments/assets/790aaca4-e490-41bc-a2ae-1f7154c4c0ae" width="400"/>
+</div>
 
 ### Occupation mémoire après conversion X-CUBE-AI
 
 <div align="center">
-  <img src="images/anlz.png" width="700"/>
+  <img src="images/anlz.png" width="600"/>
 </div>
 
 L'analyse X-CUBE-AI du modèle `machine_failure_model.h5` révèle une empreinte mémoire 
@@ -215,7 +217,9 @@ contient donc 5 valeurs flottantes dont l'argmax donne la classe prédite.
 | Train | 96% |
 | Test | 85% |
 
+<div align="center">
 <img width="500" height="500" alt="image" src="https://github.com/user-attachments/assets/1225e7f4-f5fa-4090-9672-0c9cf5ed1b83" />
+</div>
 
 Le dataset original présente un déséquilibre massif (~97% "No Failure"), ce qui biaise fortement tout modèle naïf vers la classe majoritaire. Les résultats sans rééquilibrage illustrent ce problème : TWF atteint un F1-score de 0.00 (aucune prédiction correcte), HDF 0.09, PWF 0.26, pour un macro F1 global de seulement 0.38. Le modèle se contentait essentiellement de prédire "No Failure" en permanence, avec 119 et 85 faux négatifs respectivement sur HDF et PWF.
 
