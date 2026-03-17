@@ -56,24 +56,6 @@ Ouvrir le projet dans STM32CubeIDE, compiler et flasher sur la STM32L4R9.
 
 Lancer le fichier `machine_failure.py`
 
-## Structure du dépôt
-
-```
-stm32-embedded-ai-predictive-maintenance/
-├── TP_IA_EMBARQUEE.ipynb     # Notebook d'entraînement (Google Colab)
-├── machine_failure.py                  # Communication série PC ↔ STM32
-├── model/
-│   ├── machine_failure_model.h5             # Modèle exporté
-│   ├── machine_failure_xtest.npy            # Données de test
-│   └── machine_failure_ytest.npy            # Labels de test
-├── CubeIDE/
-│   ├── Core/Src/main.c
-│   ├── Core/Inc/main.h
-│   ├── app_x-cube-ai.c          # Logique d'inférence embarquée
-│   └── app_x-cube-ai.h
-└── README.md
-```
-
 ---
 
 ## Le dataset
